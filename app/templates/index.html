@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Registration</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'css/stylelog.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <label class="navbar-brand" href="#">
+            <img src="{% static '/img/CD_symbol.jpg'%}" width="30" height="30" class="d-inline-block align-top" alt="">
+            CodingDojo Wall
+        </label>
+        {% if messages %}
+            <div class="errors">
+                <ul>
+                    {% for message in messages %}
+                        <li>{{message}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        <div class="row">
+            <div class="col">
+                <h1>Register</h1>
+                <form action="/users" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">First Name</label>
+                        <input type="text" class="form-control" name="first_name" id="exampleFormControlInput1" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">last Name</label>
+                        <input type="text" class="form-control" name="last_name" id="exampleFormControlInput1" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Email address</label>
+                        <input type="email" class="form-control" name="email" id="exampleFormControlInput1" placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Date of Birth:</label>
+                        <input type="date" class="form-control" id="date" name="dob" id="exampleFormControlInput1">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Password</label>
+                        <input type="password" class="form-control" name="password" id="exampleFormControlInput1" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Confirm Password</label>
+                        <input type="password" class="form-control" name="password_conf" id="exampleFormControlInput1" placeholder="">
+                    </div>
+                    <input type="submit" class="btn btn-success" id="submit" value="Register" >
+                </form>
+            </div>
+            <div class="col">
+                <h1>Login</h1>
+                <form action="/login" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Email address</label>
+                        <input type="email" class="form-control" name="email" id="exampleFormControlInput1" placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Password</label>
+                        <input type="password" class="form-control" name="password" id="exampleFormControlInput1" placeholder="">
+                    </div>
+                    <input type="submit" class="btn btn-success" id="submit" value="Login" >
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

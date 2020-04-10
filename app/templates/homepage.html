@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'css/stylesuc.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light" id="navbar">
+        <label class="navbar-brand" href="#">
+            <img src="{% static '/img/CD_symbol.jpg'%}" width="30" height="30" class="d-inline-block align-top" alt="">
+            CodingDojo Wall
+        </label>
+        <form action="/logout" class="p-2 bd-highlight" method="POST">
+        {%csrf_token%}
+        <h4 class="navbar-brand" id="navh4">Welcome {{user.first_name}}({{age}})</h4>
+            <input type="submit" class="btn btn-danger" value="logout">
+        </form>
+    </nav>
+    <div class="container">
+        {% if messages %}
+            <div class="errors">
+                <ul>
+                    {% for message in messages %}
+                        <li>{{message}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        <form action="/postMessage" method="POST">
+            {%csrf_token%}
+            <div class="form-group">
+                <h2 class="text-left">Post a Message</h2>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="message" placeholder="Post a Thought"></textarea>
+                <div class="text-right">
+                    <input type="submit" class="btn btn-primary" value="Post">
+                </div>
+            </div>
+        </form>
+        <div class="container2">
+        {% for message in allmessages %}
+            <h2 class="text-left">{{message.poster.first_name}} {{message.poster.last_name}} - <span>{{ message.created_at.date|date:"M dS, Y"}}</span></h2>
+                <h4 class="text-left message">
+                    {{message.message}}
+                    {% if message.poster == user %}
+                        <form action="/deleteMessage/{{message.id}}" class="text-left delcomment" method="POST">
+                        {% csrf_token %}
+                            <input type="submit" class="btn btn-link" value="Delete Message">
+                        </form>
+                    {%endif%}
+                </h4>
+                {%for comment in message.comments_on_message.all %}
+                    <h5 class="text-left comment1">
+                        {{comment.commenter.first_name}} {{comment.commenter.last_name}} - {{comment.created_at.date|date:"M dS, Y"}}
+                    </h5>
+                    <h6 class="text-left comment2">
+                        {{comment.comment}}
+                        {% if comment.commenter == user %}
+                            <form action="/deleteComment/{{comment.id}}" class="text-left delcomment" method="POST">
+                            {% csrf_token %}
+                                <input type="submit" class="btn btn-link" value="Delete Comment">
+                            </form>
+                        {%endif%}
+                    </h6>
+                {%endfor%}  
+                <form action="/postComment/{{message.id}}" method="POST">
+                    {%csrf_token%}
+                    <div class="form-group">
+                        <h4 class="text-left">Post a Comment</h4>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="comment" placeholder="Post a Thought about this Thought"></textarea>
+                        <div class="text-right">
+                            <input type="submit" class="btn btn-primary" value="Post">
+                        </div>
+                </form>
+        {%endfor%}
+        </div>
+    </div>
+</body>
+</html>

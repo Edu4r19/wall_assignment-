@@ -1,0 +1,38 @@
+html body{
+    background-image: url("/static/img/back.jpg");
+    background-size: cover;
+}
+.container{
+    background-color: rgba(0, 217, 255, 0.884);
+    padding: 10px;
+    border: 3px solid rgba(121, 118, 118, 0.418);
+    border-radius: 10px;
+    margin-top: 30px;
+    color: white;
+}
+.col{
+}
+p{
+    margin: 0px !important;
+}
+#submit{
+    display: block;
+    margin: 10px 0px;
+}
+.errors{
+    background-color: rgba(228, 48, 48, 0.719);
+    margin: auto;
+    padding-top: 10px;
+    width: 50%;
+    border: 3px solid rgba(121, 118, 118, 0.418);
+    border-radius: 10px;
+}
+ul{
+    text-align: center;
+    margin-left: -20px;
+    list-style: none;
+    color: rgb(255, 255, 255);
+}
+#date{
+    width: 40%;
+}

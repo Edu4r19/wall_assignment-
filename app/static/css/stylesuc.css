@@ -1,0 +1,110 @@
+html body{
+    background-image: url("/static/img/back.jpg");
+    background-size: cover;
+}
+@media (max-width: 570px) {
+    .container{
+        background-color: rgba(0, 217, 255, 0.884);
+        max-width: 90% !important;
+        padding: 10px;
+        text-align: center;
+        border: 3px solid rgba(121, 118, 118, 0.418);
+        color: white;
+    }
+    h1{
+        font-size: 1.5rem !important;
+    }
+    .success{
+        color: rgb(11, 187, 11);
+    }
+    li{
+        margin: auto;
+        width: 50%;
+        color: black;
+    }
+    .btn-danger{
+        margin: 10px;
+    }
+    #navbar{
+        background: linear-gradient(to bottom, #dbecff 0%,#95b9dd 99%);
+        border: 1px solid rgba(71, 71, 71, 0.055);
+    }
+    #navh4{
+        margin: 0px;
+        margin-right: 7.5em;
+    }
+    
+    
+}
+.container{
+    background-color: rgba(255, 255, 255, 0.884);
+    max-width: 90% !important;
+    padding: 10px;
+    text-align: center;
+    border-radius: 0px 0px 10px 10px;
+    border-style: none solid solid solid !important;
+    border: 1px solid rgba(121, 118, 118, 0.418);
+    color: black;
+}
+.success{
+    color: rgb(11, 187, 11);
+}
+li{
+    margin: auto;
+    width: 50%;
+    color: black;
+}
+.btn-danger{
+    margin: 10px;
+}
+#navbar{
+    background: linear-gradient(to bottom, #dbecff 0%,#95b9dd 99%);
+    border: 1px solid rgba(71, 71, 71, 0.055);
+}
+#navh4{
+    margin: 0px;
+    margin-right: 7.5em;
+}
+.btn-primary{
+    margin: 10px;
+}
+.container2{
+    background-color: rgba(255, 255, 255, 0.884);
+    max-width: 98% !important;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    border-radius:10px;
+    border-style:solid !important;
+    border: 1px solid rgba(121, 118, 118, 0.418);
+    color: black;
+}
+.message{
+    margin-left: 30px;
+}
+.errors{
+    background-color: rgba(228, 48, 48, 0.719);
+    margin: auto;
+    padding-top: 10px;
+    width: 50%;
+    border: 3px solid rgba(121, 118, 118, 0.418);
+    border-radius: 10px;
+}
+.makeacomment{
+    margin-left: 30px;
+}
+.comment1{
+    margin-left: 60px;
+}
+.comment2{
+    margin-left: 90px;
+}
+.delcomment{
+    display: inline-block;
+}
+span{
+    font-size: 1.5rem;
+}
+p{
+    font-size: 1.3rem;
+}
